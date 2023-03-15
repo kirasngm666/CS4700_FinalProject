@@ -1,0 +1,23 @@
++ How to make a 2D Game in Unity:
+https://www.youtube.com/watch?v=on9nwbZngyw
+
++ Create 8-bit game series
+https://www.youtube.com/watch?v=QaIoW1aL9GE&list=PLydZ2Hrp_gPS0QZTlxEs1dDWsQHsO2XjT
+
++ Build a 2D Platformer Game in Unity | Unity Beginner Tutorial
+https://www.youtube.com/watch?v=Ii-scMenaOQ&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U
+
++ Creating A Retro 8-Bit Dungeon Crawler Game! ft: PolyMars
+https://www.youtube.com/watch?v=rnWKbpi2CUo
+
++ I Made A MEGAMAN X GAME In 9 DAYS USING UNITY!!
+https://www.youtube.com/watch?v=NJZHykm41eY
+
++ Megaman 2 design documents
+chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.nintendo.co.jp/clv/manuals/en/pdf/CLV-P-NABBE.pdf
+
++ Creating a Megaman Clone:
+https://hub.packtpub.com/megaman-clone-part-1/
+
++ Unity Megaman Tutorial:
+https://www.youtube.com/watch?v=pARyrvmz4Bo
