@@ -1,0 +1,4 @@
+repository "Breadth of the Wild Goose Project@CS4700_version_control@cloud"
+  path "/"
+    br "/main"
+    co "/main"
