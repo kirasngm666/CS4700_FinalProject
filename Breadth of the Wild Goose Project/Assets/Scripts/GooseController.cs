@@ -29,7 +29,7 @@ public class GooseController : MonoBehaviour
     public float meleeAttackRadius = 0.6f;
     public float meleeDamage = 2f;
     public float meleeAttackDelay = 1.1f;
-    public LayerMask enenmyLayer = 10;
+    public LayerMask enemyLayer = 10;
     private float timeUntilMeleeReadied = 0;
 
     // Start is called before the first frame update
@@ -104,7 +104,7 @@ public class GooseController : MonoBehaviour
             peckTime = Time.time;
             // peck Bullet
             Debug.Log("Pecking");
-            Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(meleeAttackOrigin.position, meleeAttackRadius, enenmyLayer);
+            Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(meleeAttackOrigin.position, meleeAttackRadius, enemyLayer);
             for (int i = 0; i < overlappedColliders.Length; i--)
             {
                 IDamageable enemyAttributes = overlappedColliders[i].GetComponent<IDamageable>();
