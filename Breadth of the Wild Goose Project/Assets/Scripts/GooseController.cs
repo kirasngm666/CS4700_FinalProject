@@ -103,7 +103,7 @@ public class GooseController : MonoBehaviour
             keyPeckRelease = false;
             peckTime = Time.time;
             // peck Bullet
-            Debug.Log("Pecking");
+            Debug.Log("The goose is pecking");
             Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(meleeAttackOrigin.position, meleeAttackRadius, enemyLayer);
             for (int i = 0; i < overlappedColliders.Length; i--)
             {
