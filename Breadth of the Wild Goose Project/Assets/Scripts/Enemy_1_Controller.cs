@@ -30,12 +30,12 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         {
             if(transform.position.x > playerTransform.position.x)
             {
-                transform.localScale = new Vector3(1,1,1);
+                transform.localScale = new Vector3(20,20,1);
                 transform.position += Vector3.left * speed * Time.deltaTime;
             }
             if(transform.position.x < playerTransform.position.x)
             {
-                transform.localScale = new Vector3(-11,1,1);
+                transform.localScale = new Vector3(-20,20,1);
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
         } 
