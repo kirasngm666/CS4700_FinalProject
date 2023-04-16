@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_1_Controller : MonoBehaviour, IDamageable
+public class Enemy_3_Controller : MonoBehaviour
 {
     public float moveSpeed = 3.0f;
     public float attackDistance = 2.0f;
@@ -56,7 +56,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         {
             animator.SetBool("isRunning", false);
             animator.SetBool("isAttacking", true);
-            player.GetComponent<PlayerController>().TakeDamage(attackDamage);
+            player.GetComponent<PlayerHealth>().ApplyDamage(attackDamage);
             lastAttackTime = Time.time;
         }
         else
