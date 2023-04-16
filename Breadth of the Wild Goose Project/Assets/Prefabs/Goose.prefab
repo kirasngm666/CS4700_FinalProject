@@ -71,12 +71,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7553171061159561823}
+  - component: {fileID: 8782405182113800159}
   - component: {fileID: 127112157342338643}
   - component: {fileID: 9118827100177787813}
   - component: {fileID: 6125447486709844433}
   - component: {fileID: 7550072183289069218}
   - component: {fileID: 9206102238575175156}
-  - component: {fileID: 8782405182113800159}
   m_Layer: 9
   m_Name: Goose
   m_TagString: Player
@@ -99,8 +99,22 @@ Transform:
   - {fileID: 3508658320346329159}
   - {fileID: 4329538630727903818}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8782405182113800159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5547593884489622220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91d04609fe3fea4fb9c17fca265d746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  health: 0
 --- !u!212 &127112157342338643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -267,17 +281,3 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
---- !u!114 &8782405182113800159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5547593884489622220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91d04609fe3fea4fb9c17fca265d746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 200
-  health: 0
