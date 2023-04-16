@@ -8,7 +8,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public float healthPool = 10f;
     public float speed = 5f;
     public float jumpForce = 6f;
-    public float groundedLeeway = 0.1f;
+    //public float groundedLeeway = 0.1f;
 
     public float attackDistance = 2.0f;
     public float attackSpeed = 1.0f;
@@ -42,7 +42,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         {
             if(transform.position.x > playerTransform.position.x)
             {
-                transform.localScale = new Vector3(20,20,1);
+                transform.localScale = new Vector3(45,20,1);
                 transform.position += Vector3.left * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
@@ -51,7 +51,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             }
             if(transform.position.x < playerTransform.position.x)
             {
-                transform.localScale = new Vector3(-20,20,1);
+                transform.localScale = new Vector3(-45,20,1);
                 transform.position += Vector3.right * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {

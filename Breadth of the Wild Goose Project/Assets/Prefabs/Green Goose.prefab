@@ -30,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 2972626255375582466}
   m_LocalRotation: {x: -0, y: -0.9659258, z: -0, w: 0.2588191}
   m_LocalPosition: {x: 34, y: -18, z: 18}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 45, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
 --- !u!212 &7241356366874241437
 SpriteRenderer:
@@ -194,9 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPool: 10
-  speed: 150
+  speed: 100
   jumpForce: 350
-  groundedLeeway: 0
   attackDistance: 25
   attackSpeed: 2
   attackDamage: 2
