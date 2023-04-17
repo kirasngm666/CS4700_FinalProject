@@ -254,6 +254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Game
+  transitionCanvas: {fileID: 5547593884489622220, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+    type: 3}
 --- !u!1 &268723966
 GameObject:
   m_ObjectHideFlags: 0
