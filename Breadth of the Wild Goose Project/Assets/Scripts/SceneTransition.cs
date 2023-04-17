@@ -7,6 +7,9 @@ public class SceneTransition : MonoBehaviour
     public string nextSceneName;
     public GameObject transitionCanvas;
 
+    public int targetDisplay = 1; //change to this display
+
+
     private bool transitionInProgress = false;
 
     void Update()
@@ -43,5 +46,8 @@ public class SceneTransition : MonoBehaviour
         SceneManager.UnloadSceneAsync("TransitionScene");
 
         transitionInProgress = false;
+
+        //change to display 2
+        Display.displays[targetDisplay].Activate();
     }
 }
