@@ -1,42 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
-
-//we can attach this script to a button object in the scene and this will start the transition coroutine
-//when button is pressed, a loading scene is shown before the next scene is fully loaded
+using System.Collections;
 
 public class SceneTransition : MonoBehaviour
 {
-    public string sceneName; //the next scene name here
-    public GameObject transition;
+    public string nextSceneName;
+    public GameObject transitionCanvas;
 
-    public void LoadNextScene()
+    
+    private bool transitionInProgress = false;
+
+    void Update()
     {
-        StartCoroutine(Transition());
+        if (Input.GetMouseButtonDown(0) && !transitionInProgress)
+        {
+            StartCoroutine(Transition());
+        }
     }
 
     private IEnumerator Transition()
     {
-        AsyncOperation load = SceneManager.LoadSceneAsync("put next scene name here"); //LoadSceneAsync will allow seamless transitions 
-        load.allowSceneActivation = false;
+        transitionInProgress = true;
 
-        transition.SetActive(true);
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(nextSceneName);
+        loadOperation.allowSceneActivation = false;
 
-        while(load.progress < 0.9f)
+        // Display your transition graphics here
+        transitionCanvas.SetActive(true);
+
+        while (loadOperation.progress < 0.9f)
         {
             yield return null;
         }
 
-        load.allowSceneActivation = true;
+        loadOperation.allowSceneActivation = true;
 
-        while (!load.isDone)
+        // Wait for the new scene to finish loading before unloading the transition scene
+        while (!loadOperation.isDone)
         {
             yield return null;
         }
 
-        SceneManager.UnloadSceneAsync("put transition scene name here");
+        SceneManager.UnloadSceneAsync("TransitionScene");
+
+        transitionInProgress = false;
+
     }
 }

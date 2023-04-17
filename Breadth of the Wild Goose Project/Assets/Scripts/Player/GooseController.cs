@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GooseController : MonoBehaviour
+public class GooseController : MonoBehaviour, IDamageable
 {
-    //Animator animator;
+    Animator animator;
     BoxCollider2D box2d;
     Rigidbody2D rb2d;
 
@@ -31,16 +31,25 @@ public class GooseController : MonoBehaviour
     public float meleeAttackDelay = 1.1f;
     public LayerMask enemyLayer = 10;
     private float timeUntilMeleeReadied = 0;
+    public float healthPool = 200;
+    public float currentHealth;
+
+    bool IsTakingDamage;
+    bool isInvincible;
+    bool hitSideRight;
 
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
+        currentHealth = healthPool;
+        animator = GetComponent<Animator>();
         box2d = GetComponent<BoxCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
 
         // sprite defaults to facing right
         isFacingRight = true;
+
+        
     }
 
     private void FixedUpdate() //Check to see if we are on the ground or not
@@ -71,6 +80,11 @@ public class GooseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(IsTakingDamage)
+        {
+            animator.Play("Player_Hit");
+            return;
+        }
         PlayerDirectionInput();
         PlayerPeckInput();
         PlayerMovement();
@@ -235,5 +249,58 @@ public class GooseController : MonoBehaviour
         // invert facing direction and rotate object 180 degrees on y axis
         isFacingRight = !isFacingRight;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual void ApplyDamage(float amount)
+    {
+        if (!isInvincible)
+        {
+            currentHealth -= amount;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                StartDamageAnimation();
+            }
+        }  
+    }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void hitSide(bool rightSide)
+    {
+        hitSideRight = rightSide;
+    }
+
+    public void Invincible(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
+
+    public void StartDamageAnimation()
+    {
+        if (!IsTakingDamage)
+        {
+            IsTakingDamage = true;
+            isInvincible = true;
+            float hitForceX = 0.50f;
+            float hitForceY = 1.5f;
+            if (hitSideRight) hitForceX = -hitForceX;
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode2D.Impulse);
+        }
+    }
+
+    void StopDamageAnimation()
+    {
+        IsTakingDamage = false;
+        isInvincible = false;
+        animator.Play("Player_Idle", -1, 0f);
+
     }
 }
