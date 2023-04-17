@@ -205,7 +205,7 @@ Canvas:
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
 --- !u!224 &256144508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   nextSceneName: Game
   transitionCanvas: {fileID: 5547593884489622220, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
     type: 3}
-  targetDisplay: 1
+  targetDisplay: 0
 --- !u!1 &268723966
 GameObject:
   m_ObjectHideFlags: 0
