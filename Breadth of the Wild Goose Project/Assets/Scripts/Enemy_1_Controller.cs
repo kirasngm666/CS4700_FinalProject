@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_1_Controller : MonoBehaviour, IDamageable
 {
+    bool isInvincible;
     
     public float healthPool = 10f;
     public float speed = 5f;
@@ -20,6 +21,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
 
     private GameObject player;
     private Rigidbody rb;
+    private GooseController gooseController;
     public Transform playerTransform;
 
     public bool isChasing;
@@ -30,6 +32,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     {
         currentHealth = healthPool;
         player = GameObject.FindGameObjectWithTag("Player");
+        gooseController = player.GetComponent<GooseController>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -68,14 +71,23 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         }
     }
 
+    public void Invincible(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
+
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
         {
             //animator.SetBool("isRunning", false);
             //animator.SetBool("isAttacking", true);
-            player.GetComponent<PlayerHealth>().ApplyDamage(attackDamage);
+            //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
+            gooseController.hitSide(transform.position.x > player.transform.position.x);
+            //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
+            gooseController.ApplyDamage(attackDamage);
             lastAttackTime = Time.time;
+            Debug.Log("The ENEMY GOOSE is pecking");
         }
         else
         {
@@ -86,11 +98,14 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
 
     public virtual void ApplyDamage(float amount)
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        if (!isInvincible)
         {
-            Die();
-        }
+            currentHealth -= amount;
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+        }  
     }
 
     private void Die()
