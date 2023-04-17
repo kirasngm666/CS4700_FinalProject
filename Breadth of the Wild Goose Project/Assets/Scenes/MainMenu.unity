@@ -256,7 +256,7 @@ MonoBehaviour:
   nextSceneName: Game
   transitionCanvas: {fileID: 5547593884489622220, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
     type: 3}
-  targetDisplay: 2
+  targetDisplay: 1
 --- !u!1 &268723966
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ RectTransform:
   m_GameObject: {fileID: 268723966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3875, y: 1.7125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 256144508}
@@ -360,7 +360,7 @@ RectTransform:
   m_GameObject: {fileID: 283010166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 256144508}
@@ -437,7 +437,7 @@ RectTransform:
   m_GameObject: {fileID: 957626659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.75, y: 2.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 256144508}
@@ -445,7 +445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 19.45}
+  m_AnchoredPosition: {x: -0, y: -111}
   m_SizeDelta: {x: 273.766, y: 38.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957626661
