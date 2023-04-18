@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_1_Controller : MonoBehaviour, IDamageable
+public class BigEnemy_Controller : MonoBehaviour, IDamageable
 {
     bool isInvincible;
     
-    public float healthPool = 10f;
-    public float speed = 5f;
-    public float jumpForce = 6f;
+    public float healthPool = 100f;
+    public float speed = 100f;
+    public float jumpForce = 350f;
     //public float groundedLeeway = 0.1f;
 
-    public float attackDistance = 2.0f;
+    public float attackDistance = 10.0f;
     public float attackSpeed = 1.0f;
     public int attackDamage = 10;
-    public float attackCooldown = 2.0f;
+    public float attackCooldown = 1.0f;
 
-   [SerializeField] private float currentHealth;
+    [SerializeField] private float currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
@@ -48,7 +48,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         {
             if(transform.position.x > (playerTransform.position.x - 1.0f))
             {
-                transform.localScale = new Vector3(-45,20,1);
+                transform.localScale = new Vector3(-55,30,1);
                 transform.position += Vector3.left * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
@@ -57,7 +57,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             }
             if(transform.position.x < (playerTransform.position.x - 1.0f))
             {
-                transform.localScale = new Vector3(45,20,1);
+                transform.localScale = new Vector3(55,30,1);
                 transform.position += Vector3.right * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
@@ -79,7 +79,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
                     if(Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
                     {
-                        transform.localScale = new Vector3(45, 20 ,1);
+                        transform.localScale = new Vector3(55, 30 ,1);
                         patrolDestination = 1;
                     }
                 }
@@ -88,7 +88,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
                     if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
                     {
-                        transform.localScale = new Vector3(-45, 20 ,1);
+                        transform.localScale = new Vector3(-55, 30 ,1);
                         patrolDestination = 0;
                     }
                 }
