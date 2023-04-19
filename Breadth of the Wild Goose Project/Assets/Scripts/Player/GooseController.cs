@@ -89,6 +89,7 @@ public class GooseController : MonoBehaviour, IDamageable
         PlayerPeckInput();
         PlayerMovement();
     }
+
     void OnDrawGizmosSelected() 
     {
         if (meleeAttackOrigin != null)
@@ -288,8 +289,8 @@ public class GooseController : MonoBehaviour, IDamageable
         {
             IsTakingDamage = true;
             isInvincible = true;
-            float hitForceX = 0.50f;
-            float hitForceY = 1.5f;
+            float hitForceX = 500f;
+            float hitForceY = 500f;
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode2D.Impulse);
