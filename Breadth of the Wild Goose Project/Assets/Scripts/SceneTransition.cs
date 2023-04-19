@@ -13,7 +13,7 @@ public class SceneTransition : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !transitionInProgress)
+        if (Input.anyKeyDown && !transitionInProgress)
         {
             StartCoroutine(Transition());
         }
