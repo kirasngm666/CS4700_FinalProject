@@ -1379,26 +1379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Goose
       objectReference: {fileID: 0}
-    - target: {fileID: 72596340792275832, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1337308098}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: patrolDestination
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: patrolPoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: patrolPoints.Array.data[0]
@@ -1691,6 +1676,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8792918640077585183, guid: ca71182cabdea6346a7aedf81586ace0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d64c6e42cf5a66e4fa0f3b5193e661ec, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

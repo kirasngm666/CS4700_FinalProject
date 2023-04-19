@@ -1,26 +1,44 @@
+
+// public float healthPool = 100f;
+//     public float speed = 100f;
+//     public float jumpForce = 350f;
+//     //public float groundedLeeway = 0.1f;
+
+//     public float attackDistance = 10.0f;
+//     public float attackSpeed = 1.0f;
+//     public int attackDamage = 10;
+//     public float attackCooldown = 1.0f;
+// transform.localScale = new Vector3(-55,30,1);
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BigEnemy_Controller : MonoBehaviour, IDamageable
 {
+    Animator animator;
+    BoxCollider2D box2d;
+
+    bool IsTakingDamage;
     bool isInvincible;
+    bool hitSideRight;
     
+
     public float healthPool = 100f;
     public float speed = 100f;
     public float jumpForce = 350f;
     //public float groundedLeeway = 0.1f;
 
-    public float attackDistance = 10.0f;
+    public float attackDistance = 20.0f;
     public float attackSpeed = 1.0f;
     public int attackDamage = 10;
-    public float attackCooldown = 1.0f;
+    public float attackCooldown = 2.0f;
 
-    [SerializeField] private float currentHealth;
+   [SerializeField] private float currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
-    private Rigidbody rb;
+    private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
 
@@ -34,16 +52,23 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = healthPool;
+        animator = GetComponent<Animator>();
+        box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gooseController = player.GetComponent<GooseController>();
-        rb = GetComponent<Rigidbody>();
+        rb2d = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if(IsTakingDamage)
+        {
+            animator.Play("Enemy_Hit");
+            return;
+        }
 
+        float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
             if(transform.position.x > (playerTransform.position.x - 1.0f))
@@ -96,11 +121,6 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public void Invincible(bool invincibility)
-    {
-        isInvincible = invincibility;
-    }
-
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
@@ -130,11 +150,47 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
             {
                 Die();
             }
+            else
+            {
+                StartEnemyDamageAnimation();
+            }
         }  
     }
 
     private void Die()
     {
         gameObject.SetActive(false);
+    }
+
+    public void hitSide(bool rightSide)
+    {
+        hitSideRight = rightSide;
+    }
+
+    public void Invincible(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
+
+    public void StartEnemyDamageAnimation()
+    {
+        if (!IsTakingDamage)
+        {
+            IsTakingDamage = true;
+            isInvincible = true;
+            float hitForceX = 500f;
+            float hitForceY = 500f;
+            if (hitSideRight) hitForceX = -hitForceX;
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode.Impulse);
+        }
+    }
+
+    void StopEnemyDamageAnimation()
+    {
+        IsTakingDamage = false;
+        isInvincible = false;
+        animator.Play("Enemy_Idle", -1, 0f);
+
     }
 }

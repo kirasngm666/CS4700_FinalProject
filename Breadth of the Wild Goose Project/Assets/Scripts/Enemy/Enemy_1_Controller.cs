@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Enemy_1_Controller : MonoBehaviour, IDamageable
 {
+    Animator animator;
+    BoxCollider2D box2d;
+
+    bool IsTakingDamage;
     bool isInvincible;
+    bool hitSideRight;
     
+
     public float healthPool = 10f;
     public float speed = 5f;
     public float jumpForce = 6f;
@@ -20,7 +26,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     private float lastAttackTime;
 
     private GameObject player;
-    private Rigidbody rb;
+    private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
 
@@ -34,16 +40,23 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = healthPool;
+        animator = GetComponent<Animator>();
+        box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gooseController = player.GetComponent<GooseController>();
-        rb = GetComponent<Rigidbody>();
+        rb2d = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if(IsTakingDamage)
+        {
+            animator.Play("Enemy_Hit");
+            return;
+        }
 
+        float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
             if(transform.position.x > (playerTransform.position.x - 1.0f))
@@ -96,11 +109,6 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public void Invincible(bool invincibility)
-    {
-        isInvincible = invincibility;
-    }
-
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
@@ -130,11 +138,47 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             {
                 Die();
             }
+            else
+            {
+                StartEnemyDamageAnimation();
+            }
         }  
     }
 
     private void Die()
     {
         gameObject.SetActive(false);
+    }
+
+    public void hitSide(bool rightSide)
+    {
+        hitSideRight = rightSide;
+    }
+
+    public void Invincible(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
+
+    public void StartEnemyDamageAnimation()
+    {
+        if (!IsTakingDamage)
+        {
+            IsTakingDamage = true;
+            isInvincible = true;
+            float hitForceX = 500f;
+            float hitForceY = 500f;
+            if (hitSideRight) hitForceX = -hitForceX;
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode.Impulse);
+        }
+    }
+
+    void StopEnemyDamageAnimation()
+    {
+        IsTakingDamage = false;
+        isInvincible = false;
+        animator.Play("Enemy_Idle", -1, 0f);
+
     }
 }

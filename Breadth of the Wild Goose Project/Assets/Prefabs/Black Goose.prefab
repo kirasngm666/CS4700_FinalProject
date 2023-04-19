@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
 --- !u!212 &6599270039901179034
 SpriteRenderer:
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 72596340792275832}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d64c6e42cf5a66e4fa0f3b5193e661ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,8 +200,11 @@ MonoBehaviour:
   attackSpeed: 2
   attackDamage: 2
   attackCooldown: 3
+  currentHealth: 0
   playerTransform: {fileID: 0}
   isChasing: 0
   chaseDistance: 100
-  patrolPoints: []
-  patrolDestination: 0
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  patrolDestination: 1
