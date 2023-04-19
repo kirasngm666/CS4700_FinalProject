@@ -48,6 +48,8 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     public Transform[] patrolPoints;
     public int patrolDestination;
 
+    private int hitCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -145,6 +147,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     {
         if (!isInvincible)
         {
+            hitCount++;
             currentHealth -= amount;
             if (currentHealth <= 0)
             {
@@ -152,7 +155,10 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
             }
             else
             {
-                StartEnemyDamageAnimation();
+               if (hitCount == 3)
+               {
+                    StartEnemyDamageAnimation(); 
+               } 
             }
         }  
     }
@@ -178,6 +184,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
         {
             IsTakingDamage = true;
             isInvincible = true;
+            hitCount = 0;
             float hitForceX = 500f;
             float hitForceY = 500f;
             if (hitSideRight) hitForceX = -hitForceX;
