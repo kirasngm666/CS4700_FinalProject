@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_1_Controller : MonoBehaviour, IDamageable
+public class FlyEnemy_Controller : MonoBehaviour, IDamageable
 {
     Animator animator;
     BoxCollider2D box2d;
@@ -12,15 +12,15 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     bool hitSideRight;
     
 
-    public float healthPool = 10f;
-    public float speed = 5f;
-    public float jumpForce = 6f;
+    public float healthPool = 2f;
+    public float speed = 300f;
+    //public float jumpForce = 6f;
     //public float groundedLeeway = 0.1f;
 
-    public float attackDistance = 2.0f;
-    public float attackSpeed = 1.0f;
+    public float attackDistance = 25.0f;
+    public float attackSpeed = 10.0f;
     public int attackDamage = 10;
-    public float attackCooldown = 2.0f;
+    public float attackCooldown = 1.0f;
 
    [SerializeField] private float currentHealth;
     private float lastAttackTime;
@@ -36,7 +36,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public Transform[] patrolPoints;
     public int patrolDestination;
 
-    //private int hitCount = 0;
+    private int hitCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +58,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             return;
         }
 
+        //chaseDistance = 50;
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
@@ -82,13 +83,15 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         } 
         else
         {
-            if(Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
+            if(Vector2.Distance(transform.position, playerTransform.position) < chaseDistance && hitCount == 0)
             {
                 isChasing = true;
             } 
             else
             {
                 isChasing = false;
+                hitCount = 0;
+                //chaseDistance = 50;
                 if (patrolDestination == 0)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
@@ -102,6 +105,15 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
                 {
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
                     if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
+                    {
+                        transform.localScale = new Vector3(45, 20 ,1);
+                        patrolDestination = 2;
+                    }
+                }
+                if (patrolDestination == 2)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, patrolPoints[2].position, speed * Time.deltaTime);
+                    if(Vector2.Distance(transform.position, patrolPoints[2].position) < .2f)
                     {
                         transform.localScale = new Vector3(-45, 20 ,1);
                         patrolDestination = 0;
@@ -123,6 +135,9 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             gooseController.ApplyDamage(attackDamage);
             lastAttackTime = Time.time;
             Debug.Log("The ENEMY GOOSE is pecking");
+            hitCount++;
+            //chaseDistance = 0;
+            // isChasing = false;
         }
         else
         {
@@ -187,6 +202,5 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         IsTakingDamage = false;
         isInvincible = false;
         animator.Play("Enemy_Idle", -1, 0f);
-
     }
 }
