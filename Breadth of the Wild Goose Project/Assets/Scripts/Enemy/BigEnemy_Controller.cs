@@ -1,15 +1,3 @@
-
-// public float healthPool = 100f;
-//     public float speed = 100f;
-//     public float jumpForce = 350f;
-//     //public float groundedLeeway = 0.1f;
-
-//     public float attackDistance = 10.0f;
-//     public float attackSpeed = 1.0f;
-//     public int attackDamage = 10;
-//     public float attackCooldown = 1.0f;
-// transform.localScale = new Vector3(-55,30,1);
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
