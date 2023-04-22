@@ -30,6 +30,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     private GooseController gooseController;
     public Transform playerTransform;
 
+
     public bool isChasing = false;
     public float chaseDistance;
 
@@ -37,6 +38,9 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     public int patrolDestination;
 
     private int hitCount = 0;
+
+    private GameManagerController gameManagerController;
+     private GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +50,8 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gooseController = player.GetComponent<GooseController>();
+        gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+        gameManagerController = gameManager.GetComponent<GameManagerController>();
         rb2d = GetComponent<Rigidbody>();
     }
 
@@ -154,6 +160,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     private void Die()
     {
         gameObject.SetActive(false);
+        gameManagerController.EnemyDefeated();
     }
 
     public void hitSide(bool rightSide)

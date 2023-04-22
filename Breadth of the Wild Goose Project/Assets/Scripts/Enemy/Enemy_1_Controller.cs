@@ -36,6 +36,9 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public Transform[] patrolPoints;
     public int patrolDestination;
 
+     private GameManagerController gameManagerController;
+     private GameObject gameManager;
+
     //private int hitCount = 0;
 
     // Start is called before the first frame update
@@ -46,6 +49,8 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gooseController = player.GetComponent<GooseController>();
+        gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+        gameManagerController = gameManager.GetComponent<GameManagerController>();
         rb2d = GetComponent<Rigidbody>();
     }
 
@@ -154,6 +159,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     private void Die()
     {
         gameObject.SetActive(false);
+        gameManagerController.EnemyDefeated();
     }
 
     public void hitSide(bool rightSide)

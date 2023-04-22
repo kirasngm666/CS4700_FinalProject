@@ -29,6 +29,7 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
     private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
+    
 
     public bool isChasing = false;
     public float chaseDistance;
@@ -38,6 +39,9 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
 
     private int hitCount = 0;
 
+    private GameManagerController gameManagerController;
+     private GameObject gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +50,10 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         gooseController = player.GetComponent<GooseController>();
+        gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+        gameManagerController = gameManager.GetComponent<GameManagerController>();
         rb2d = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -169,6 +176,7 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
     private void Die()
     {
         gameObject.SetActive(false);
+        gameManagerController.EnemyDefeated();
     }
 
     public void hitSide(bool rightSide)
