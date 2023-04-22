@@ -257,6 +257,7 @@ public class GooseController : MonoBehaviour, IDamageable
         if (!isInvincible)
         {
             currentHealth -= amount;
+            UIHealthBar.instance.SetValue(currentHealth / (float)healthPool);
             if (currentHealth <= 0)
             {
                 Die();
