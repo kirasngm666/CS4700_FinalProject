@@ -24,6 +24,7 @@ public class CameraControl : MonoBehaviour
         //if 4 enemies have been beaten, move camera to boss section
         if (GameManagerController.instance != null && GameManagerController.instance.enemiesBeaten >= 4)
         {
+           
             if (!isPlayerTeleported)
             {
                 Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
