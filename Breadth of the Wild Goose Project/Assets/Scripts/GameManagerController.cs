@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class GameManagerController : MonoBehaviour
 {
-    [SerializeField] int enemiesBeaten = 0;
+    public int enemiesBeaten = 0;
+
+    public static GameManagerController instance;
 
     private bool isActive;
 
     private GameObject rightWall;
+
+    public bool bossDefeated = false;
+
+    public void Awake()
+    {
+        {
+            if(instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 
     // Update is called once per frame
     void Start() 
@@ -37,5 +55,10 @@ public class GameManagerController : MonoBehaviour
             Debug.Log("Bring down the right wall barrier!");
             rightWall.SetActive(false);
         }
+    }
+
+    public void BossDefeated()
+    {
+        bossDefeated = true;
     }
 }
