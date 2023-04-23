@@ -11,6 +11,14 @@ public class GooseController : MonoBehaviour, IDamageable
     // Movement
     [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] float jumpSpeed = 3.7f;
+
+    //Audio
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip jumpLandedClip;
+    [SerializeField] AudioClip peckClip;
+    [SerializeField] AudioClip slapClip;
+    [SerializeField] AudioClip kickClip;
+    [SerializeField] AudioClip takingDamageClip;
     
     // Key Input
     float keyHorizontal;
@@ -18,6 +26,7 @@ public class GooseController : MonoBehaviour, IDamageable
     bool keyPeck;
 
     bool isGrounded;
+    bool isJumping;
     bool isPecking;
     bool isFacingRight;
 
@@ -69,6 +78,11 @@ public class GooseController : MonoBehaviour, IDamageable
         if (raycastHit.collider != null)
         {
             isGrounded = true;
+            if (isJumping)
+            {
+                SoundManager.Instance.Play(jumpLandedClip);
+                isJumping = false;
+            }
         }
         // draw debug lines
         raycastColor = (isGrounded) ? Color.green : Color.red;
@@ -120,6 +134,7 @@ public class GooseController : MonoBehaviour, IDamageable
             // peck Bullet
             Debug.Log("The goose is pecking");
             Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(meleeAttackOrigin.position, meleeAttackRadius, enemyLayer);
+            SoundManager.Instance.Play(peckClip);
             for (int i = 0; i < overlappedColliders.Length; i--)
             {
                 IDamageable enemyAttributes = overlappedColliders[i].GetComponent<IDamageable>();
@@ -228,11 +243,13 @@ public class GooseController : MonoBehaviour, IDamageable
             //     animator.Play("Player_Jump");
             // }
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
+            SoundManager.Instance.Play(jumpClip);
         }
 
         // while not grounded play jump animation (jumping or falling)
         if (!isGrounded)
         {
+            isJumping = true;
             // jump or jump peck animation
             // if (isPecking)
             // {
@@ -295,6 +312,7 @@ public class GooseController : MonoBehaviour, IDamageable
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode2D.Impulse);
+            SoundManager.Instance.Play(takingDamageClip);
         }
     }
 

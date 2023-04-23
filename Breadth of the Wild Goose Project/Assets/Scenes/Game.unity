@@ -916,9 +916,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e87cd7d688444261aaad2c751a2d6d1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0cefc8733c0126149a5a1baef393f9fd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.135
+  m_Volume: 0.075
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2635,9 +2635,39 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: f0fa012df6346554aa94d5feeb40f23c, type: 2}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 80d495a0b14921d4d8b5dc912f6a633e, type: 3}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
+      propertyPath: kickClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d9ce4940b81e5844ad8c01a220faa92, type: 3}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
+      propertyPath: peckClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 39fb19d844f393e4a8f7c983e327ec83, type: 3}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
+      propertyPath: slapClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b72eb8773c4a31d489dbee9b3883ec43, type: 3}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
       propertyPath: meleeDamage
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
+      propertyPath: jumpLandedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 711d85adf19510a4d91b40d5801d71d7, type: 3}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
+      propertyPath: takingDamageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 82c58199bb63b5849a10a479c7c8f73c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2711,6 +2741,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
+      propertyPath: bossLaugh
+      value: 
+      objectReference: {fileID: 8300000, guid: cab5abfd34c15c84b8203a5abc9a943e, type: 3}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: attackDamage
