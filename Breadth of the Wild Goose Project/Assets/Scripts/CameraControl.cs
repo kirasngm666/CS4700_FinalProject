@@ -3,9 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class CameraControl : MonoBehaviour
 {
     public Transform player;
@@ -29,7 +26,6 @@ public class CameraControl : MonoBehaviour
        if (GameManagerController.instance != null && GameManagerController.instance.enemiesBeaten >= 4)
         {
             
-
             if (!isPlayerTeleported)
             {
                 Vector2 newPosition = new Vector2(nextSection.position.x - 3f, nextSection.position.y);
