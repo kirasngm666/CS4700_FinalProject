@@ -158,7 +158,7 @@ public class GooseController : MonoBehaviour, IDamageable
                 Flip();
             }
             // grounded play run animation
-            // if (isGrounded)
+            if (isGrounded)
             // {
             //     // play run peck or run animation
             //     if (isPecking)
@@ -166,9 +166,9 @@ public class GooseController : MonoBehaviour, IDamageable
             //         animator.Play("Player_Runpeck");
             //     }
             //     else
-            //     {
-            //         animator.Play("Player_Run");
-            //     }
+                {
+                    animator.Play("Player_Run");
+                }
             // }
             // negative move speed to go left
             rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
@@ -181,7 +181,7 @@ public class GooseController : MonoBehaviour, IDamageable
                 Flip();
             }
             // grounded play run animation
-            // if (isGrounded)
+            if (isGrounded)
             // {
             //     // play run peck or run animation
             //     if (isPecking)
@@ -189,9 +189,9 @@ public class GooseController : MonoBehaviour, IDamageable
             //         animator.Play("Player_Runpeck");
             //     }
             //     else
-            //     {
-            //         animator.Play("Player_Run");
-            //     }
+                {
+                    animator.Play("Player_Run");
+                }
             // }
             // positive move speed to go right
             rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
@@ -199,17 +199,17 @@ public class GooseController : MonoBehaviour, IDamageable
         else   // no movement
         {
             // grounded play idle animation
-            // if (isGrounded)
+            if (isGrounded)
             // {
             //     // play peck or idle animation
-            //     if (isPecking)
-            //     {
-            //         animator.Play("Player_peck");
-            //     }
-            //     else
-            //     {
-            //         animator.Play("Player_Idle");
-            //     }
+                if (isPecking)
+                {
+                    animator.Play("Player_peck");
+                }
+                else
+                {
+                    animator.Play("Player_Idle");
+                }
             // }
             // no movement zero x velocity
             rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
@@ -225,7 +225,7 @@ public class GooseController : MonoBehaviour, IDamageable
             // }
             // else
             // {
-            //     animator.Play("Player_Jump");
+                animator.Play("Player_Jump");
             // }
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
         }
@@ -240,7 +240,7 @@ public class GooseController : MonoBehaviour, IDamageable
             // }
             // else
             // {
-            //     animator.Play("Player_Jump");
+                animator.Play("Player_Jump");
             // }
         }
     }
