@@ -1675,7 +1675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1081513583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1683,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081513582}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d17dfeddda25b6541806d1d8d3ed13b6, type: 3}
   m_Name: 
@@ -3002,35 +3002,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 127112157342338643, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5547593884489622220, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: m_Name
       value: Goose
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125447486709844433, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.1712422
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125447486709844433, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.9623704
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125447486709844433, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.10002279
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125447486709844433, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.0928781
       objectReference: {fileID: 0}
     - target: {fileID: 7553171061159561823, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3040,12 +3015,12 @@ PrefabInstance:
     - target: {fileID: 7553171061159561823, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 62
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 7553171061159561823, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -200
+      value: -163
       objectReference: {fileID: 0}
     - target: {fileID: 7553171061159561823, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3087,46 +3062,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9118827100177787813, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: f0fa012df6346554aa94d5feeb40f23c, type: 2}
-    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: jumpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 80d495a0b14921d4d8b5dc912f6a633e, type: 3}
-    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: kickClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4d9ce4940b81e5844ad8c01a220faa92, type: 3}
-    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: peckClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 39fb19d844f393e4a8f7c983e327ec83, type: 3}
-    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: slapClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b72eb8773c4a31d489dbee9b3883ec43, type: 3}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: meleeDamage
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
-      propertyPath: jumpLandedClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 711d85adf19510a4d91b40d5801d71d7, type: 3}
-    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
-        type: 3}
-      propertyPath: takingDamageClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 82c58199bb63b5849a10a479c7c8f73c, type: 3}
+      propertyPath: meleeAttackDelay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3199,6 +3144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
+      propertyPath: attackDistance
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}

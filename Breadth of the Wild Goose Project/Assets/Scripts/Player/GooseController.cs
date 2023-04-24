@@ -174,17 +174,17 @@ public class GooseController : MonoBehaviour, IDamageable
             }
             // grounded play run animation
             if (isGrounded)
-            // {
-            //     // play run peck or run animation
-            //     if (isPecking)
-            //     {
-            //         animator.Play("Player_Runpeck");
-            //     }
-            //     else
+             {
+                 // play run peck or run animation
+                 if (isPecking)
+                 {
+                     animator.Play("Player_Run_Peck");
+                 }
+                 else
                 {
                     animator.Play("Player_Run");
                 }
-            // }
+             }
             // negative move speed to go left
             rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
         }
@@ -197,17 +197,17 @@ public class GooseController : MonoBehaviour, IDamageable
             }
             // grounded play run animation
             if (isGrounded)
-            // {
-            //     // play run peck or run animation
-            //     if (isPecking)
-            //     {
-            //         animator.Play("Player_Runpeck");
-            //     }
-            //     else
+             {
+                 // play run peck or run animation
+                 if (isPecking)
+                 {
+                     animator.Play("Player_Run_Peck");
+                 }
+                 else
                 {
                     animator.Play("Player_Run");
                 }
-            // }
+             }
             // positive move speed to go right
             rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
         }
@@ -215,17 +215,17 @@ public class GooseController : MonoBehaviour, IDamageable
         {
             // grounded play idle animation
             if (isGrounded)
-            // {
-            //     // play peck or idle animation
+             {
+                 // play peck or idle animation
                 if (isPecking)
                 {
-                    animator.Play("Player_peck");
+                    animator.Play("Player_Peck");
                 }
                 else
                 {
                     animator.Play("Player_Idle");
                 }
-            // }
+             }
             // no movement zero x velocity
             rb2d.velocity = new Vector2(0f, rb2d.velocity.y);
         }
@@ -233,15 +233,15 @@ public class GooseController : MonoBehaviour, IDamageable
         // pressing jump while grounded - can only jump once
         if (keyJump && isGrounded)
         {
-            // play jump/jump peck animation and jump speed on y velocity
-            // if (isPecking)
-            // {
-            //     animator.Play("Player_Jumppeck");
-            // }
-            // else
-            // {
+             //play jump/jump peck animation and jump speed on y velocity
+             if (isPecking)
+             {
+                 animator.Play("Player_Jump_Kick");
+             }
+             else
+             {
                 animator.Play("Player_Jump");
-            // }
+             }
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
             SoundManager.Instance.Play(jumpClip);
         }
@@ -251,14 +251,14 @@ public class GooseController : MonoBehaviour, IDamageable
         {
             isJumping = true;
             // jump or jump peck animation
-            // if (isPecking)
-            // {
-            //     animator.Play("Player_JumpPeck");
-            // }
-            // else
-            // {
+             if (isPecking)
+             {
+                 animator.Play("Player_Jump_Kick");
+             }
+             else
+             {
                 animator.Play("Player_Jump");
-            // }
+             }
         }
     }
 
@@ -307,8 +307,8 @@ public class GooseController : MonoBehaviour, IDamageable
         {
             IsTakingDamage = true;
             isInvincible = true;
-            float hitForceX = 500f;
-            float hitForceY = 500f;
+            float hitForceX = 750f;
+            float hitForceY = 750f;
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode2D.Impulse);
