@@ -31,6 +31,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public Transform playerTransform;
 
     public bool isChasing = false;
+    public bool isMoving = false;
     public float chaseDistance;
 
     public Transform[] patrolPoints;
@@ -62,12 +63,18 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             animator.Play("Enemy_Hit");
             return;
         }
+        EnemyMovement();
+        
+    }
 
+    void EnemyMovement()
+    {
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
             if(transform.position.x > (playerTransform.position.x - 1.0f))
             {
+                animator.Play("Enemy_Run");
                 transform.localScale = new Vector3(-45,20,1);
                 transform.position += Vector3.left * speed * Time.deltaTime;
                 if (distance < attackDistance)
@@ -77,6 +84,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             }
             if(transform.position.x < (playerTransform.position.x - 1.0f))
             {
+                animator.Play("Enemy_Run");
                 transform.localScale = new Vector3(45,20,1);
                 transform.position += Vector3.right * speed * Time.deltaTime;
                 if (distance < attackDistance)
@@ -96,6 +104,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
                 isChasing = false;
                 if (patrolDestination == 0)
                 {
+                    animator.Play("Enemy_Run");
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
                     if(Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
                     {
@@ -105,6 +114,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
                 }
                 if (patrolDestination == 1)
                 {
+                    animator.Play("Enemy_Run");
                     transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
                     if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
                     {
@@ -115,7 +125,6 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             }
         }
     }
-
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
@@ -125,6 +134,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
             gooseController.hitSide(transform.position.x > player.transform.position.x);
             //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
+            animator.Play("Enemy_Peck");
             gooseController.ApplyDamage(attackDamage);
             lastAttackTime = Time.time;
             Debug.Log("The ENEMY GOOSE is pecking");
@@ -192,7 +202,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         
         IsTakingDamage = false;
         isInvincible = false;
-        animator.Play("Enemy_Idle", -1, 0f);
+        animator.Play("Enemy_Run", -1, 0f);
 
     }
 }

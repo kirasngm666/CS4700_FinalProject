@@ -1675,7 +1675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1081513583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,10 +1688,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17dfeddda25b6541806d1d8d3ed13b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swarmerPrefab: {fileID: 0}
-  bigSwarmerPrefab: {fileID: 0}
+  swarmerPrefab: {fileID: 72596340792275832, guid: fc6797fad75fb0043a906731e1a102c7,
+    type: 3}
+  bigSwarmerPrefab: {fileID: 6967405237620877510, guid: ca71182cabdea6346a7aedf81586ace0,
+    type: 3}
   swarmerInterval: 3.5
   bigSwarmerInterval: 10
+  spawnOffset: 10
+  maxEnemies: 4
+  maxTotalEnemies: 10
 --- !u!4 &1081513584
 Transform:
   m_ObjectHideFlags: 0
@@ -2183,7 +2188,7 @@ PrefabInstance:
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: healthPool
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
@@ -2914,11 +2919,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Goose
       objectReference: {fileID: 0}
-    - target: {fileID: 72596340792275832, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: playerTransform
@@ -3115,7 +3115,7 @@ PrefabInstance:
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: meleeDamage
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3158,7 +3158,7 @@ PrefabInstance:
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -184
+      value: -119
       objectReference: {fileID: 0}
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
@@ -3199,21 +3199,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
-        type: 3}
-      propertyPath: bossLaugh
-      value: 
-      objectReference: {fileID: 8300000, guid: cab5abfd34c15c84b8203a5abc9a943e, type: 3}
-    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
-        type: 3}
-      propertyPath: attackDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
-        type: 3}
-      propertyPath: chaseDistance
-      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
@@ -3395,31 +3380,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
         type: 3}
-      propertyPath: healthPool
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: chaseDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: attackCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: attackDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1337308098}
@@ -3438,16 +3398,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Big Goose
       objectReference: {fileID: 0}
-    - target: {fileID: 6967405237620877510, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8792918640077585183, guid: ca71182cabdea6346a7aedf81586ace0,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d64c6e42cf5a66e4fa0f3b5193e661ec, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
