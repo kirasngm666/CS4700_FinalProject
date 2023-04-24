@@ -10,6 +10,8 @@ TagManager:
   - Bomb
   - Game Manager
   - Wall Right
+  - Fix Patrol A
+  - Fix Patrol B
   layers:
   - Default
   - TransparentFX

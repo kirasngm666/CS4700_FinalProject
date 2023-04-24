@@ -48,10 +48,10 @@ public class GameManagerController : MonoBehaviour
 
     public void GetRidOfWall()
     {
-        if (enemiesBeaten == 4)
+        if (enemiesBeaten >= 10)
         {
             isActive = true;
-            Debug.Log("You've beaten 4 enemies!");
+            Debug.Log("You've beaten 10 enemies!");
             Debug.Log("Bring down the right wall barrier!");
             rightWall.SetActive(false);
         }
