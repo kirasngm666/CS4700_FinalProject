@@ -14,7 +14,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     bool hitSideRight;
     
 
-    public float healthPool = 100f;
+    public int healthPool = 100;
     public float speed = 70f;
     public float jumpForce = 350f;
     //public float groundedLeeway = 0.1f;
@@ -24,7 +24,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     public int attackDamage = 10;
     public float attackCooldown = 4.0f;
 
-   [SerializeField] private float currentHealth;
+   [SerializeField] private int currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
@@ -133,13 +133,13 @@ public class Boss_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void ApplyDamage(float amount)
+    public virtual void ApplyDamage(int amount)
     {
         if (!isInvincible)
         {
             hitCount++;
             currentHealth -= amount;
-            BossUIHealthBar.instance.SetValue(currentHealth / (float)healthPool);
+            BossUIHealthBar.instance.SetValue((float)currentHealth / (float)healthPool);
             if (currentHealth <= 0)
             {
                 Die();
@@ -176,7 +176,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             IsTakingDamage = true;
             isInvincible = true;
             hitCount = 0;
-            float hitForceX = 1500f;
+            float hitForceX = 15000f;
             float hitForceY = 1500f;
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;

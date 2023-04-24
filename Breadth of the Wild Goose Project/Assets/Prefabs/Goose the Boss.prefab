@@ -197,7 +197,7 @@ MonoBehaviour:
   healthPool: 100
   speed: 70
   jumpForce: 350
-  attackDistance: 100
+  attackDistance: 70
   attackSpeed: 1
   attackDamage: 20
   attackCooldown: 4

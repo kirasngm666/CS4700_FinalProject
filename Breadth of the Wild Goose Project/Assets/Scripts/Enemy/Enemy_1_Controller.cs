@@ -12,7 +12,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     bool hitSideRight;
     
 
-    public float healthPool = 10f;
+    public int healthPool = 10;
     public float speed = 5f;
     public float jumpForce = 6f;
     //public float groundedLeeway = 0.1f;
@@ -22,7 +22,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public int attackDamage = 10;
     public float attackCooldown = 2.0f;
 
-   [SerializeField] private float currentHealth;
+   [SerializeField] private int currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
@@ -37,8 +37,10 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public Transform[] patrolPoints;
     public int patrolDestination;
 
-     private GameManagerController gameManagerController;
-     private GameObject gameManager;
+    private GameManagerController gameManagerController;
+    private GameObject gameManager;
+
+    public EnemyHealthBar healthBar;
 
     //private int hitCount = 0;
 
@@ -46,6 +48,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     void Start()
     {
         currentHealth = healthPool;
+        healthBar.SetMaxHealth(healthPool);
         animator = GetComponent<Animator>();
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -146,12 +149,13 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void ApplyDamage(float amount)
+    public virtual void ApplyDamage(int amount)
     {
         //hitCount++;
         if (!isInvincible)
         {
             currentHealth -= amount;
+            healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 Die();

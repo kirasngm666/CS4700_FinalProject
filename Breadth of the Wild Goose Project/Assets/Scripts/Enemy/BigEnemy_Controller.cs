@@ -12,7 +12,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     bool hitSideRight;
     
 
-    public float healthPool = 100f;
+    public int healthPool = 100;
     public float speed = 100f;
     public float jumpForce = 350f;
     //public float groundedLeeway = 0.1f;
@@ -22,7 +22,7 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     public int attackDamage = 10;
     public float attackCooldown = 2.0f;
 
-   [SerializeField] private float currentHealth;
+   [SerializeField] private int currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
@@ -40,12 +40,15 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
     private int hitCount = 0;
 
     private GameManagerController gameManagerController;
-     private GameObject gameManager;
+    private GameObject gameManager;
+
+    public EnemyHealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = healthPool;
+        healthBar.SetMaxHealth(healthPool);
         animator = GetComponent<Animator>();
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -142,12 +145,13 @@ public class BigEnemy_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void ApplyDamage(float amount)
+    public virtual void ApplyDamage(int amount)
     {
         if (!isInvincible)
         {
             hitCount++;
             currentHealth -= amount;
+            healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 Die();
