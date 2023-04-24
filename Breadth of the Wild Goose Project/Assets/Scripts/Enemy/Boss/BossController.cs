@@ -23,6 +23,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     public float attackSpeed = 1.0f;
     public int attackDamage = 10;
     public float attackCooldown = 4.0f;
+    private bool isAboutToAttack;
 
    [SerializeField] private int currentHealth;
     private float lastAttackTime;
@@ -59,26 +60,49 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             animator.Play("Boss_Hit");
             return;
         }
+        
+        if (isAboutToAttack)
+        {
+            animator.Play("Boss_Slap");
+            return;
+            //Attack();
+        }
+        else
+        {
+            BossMovement();
+        } 
+        
+    }
 
+    public void BossMovement()
+    {
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
         {
             if(transform.position.x > (playerTransform.position.x - 1.0f))
             {
+                animator.Play("Boss_Run");
                 transform.localScale = new Vector3(-100,70,1);
                 transform.position += Vector3.left * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
+                    //animator.SetActive("Boss_Run", false);
+                    //animator.Play("Boss_Slap");
                     Attack();
+                    //isAboutToAttack = true;
                 }
             }
             if(transform.position.x < (playerTransform.position.x - 1.0f))
             {
+                animator.Play("Boss_Run");
                 transform.localScale = new Vector3(100,70,1);
                 transform.position += Vector3.right * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
+                    //animator.SetActive("Boss_Run", false);
+                    //animator.Play("Boss_Slap");
                     Attack();
+                    //isAboutToAttack = true;
                 }
             }
         } 
@@ -88,28 +112,6 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             {
                 isChasing = true;
             } 
-            // else
-            // {
-            //     isChasing = false;
-            //     if (patrolDestination == 0)
-            //     {
-            //         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
-            //         if(Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
-            //         {
-            //             transform.localScale = new Vector3(100, 70,1);
-            //             patrolDestination = 1;
-            //         }
-            //     }
-            //     if (patrolDestination == 1)
-            //     {
-            //         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
-            //         if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
-            //         {
-            //             transform.localScale = new Vector3(-100, 70 ,1);
-            //             patrolDestination = 0;
-            //         }
-            //     }
-            // }
         }
     }
 
@@ -117,20 +119,19 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     {
         if (Time.time - lastAttackTime > attackCooldown)
         {
+            StartEnemyAttackAnimation();
             //animator.SetBool("isRunning", false);
             //animator.SetBool("isAttacking", true);
             //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
-            gooseController.hitSide(transform.position.x > player.transform.position.x);
             //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
-            gooseController.ApplyDamage(attackDamage);
-            lastAttackTime = Time.time;
-            Debug.Log("GOOSE THE BOSS is pecking");
+            
         }
-        else
-        {
-            //animator.SetBool("isRunning", true);
-            //animator.SetBool("isAttacking", false);
-        }
+        // else
+        // {
+            // animator.SetBool("Boss_Run", true);
+            // animator.SetBool("isRunning", true);
+            // animator.SetBool("isAttacking", false);
+        // }
     }
 
     public virtual void ApplyDamage(int amount)
@@ -176,8 +177,8 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             IsTakingDamage = true;
             isInvincible = true;
             hitCount = 0;
-            float hitForceX = 15000f;
-            float hitForceY = 1500f;
+            float hitForceX = 150000f;
+            float hitForceY = 150000f;
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode.Impulse);
@@ -190,7 +191,25 @@ public class Boss_Controller : MonoBehaviour, IDamageable
         isInvincible = false;
         animator.Play("Boss_Idle", -1, 0f);
         SoundManager.Instance.Play(bossLaugh);
-
-
     }
+
+    public void StartEnemyAttackAnimation()
+    {
+        if (!isAboutToAttack)
+        {
+            isAboutToAttack = true;
+            gooseController.hitSide(transform.position.x > player.transform.position.x);
+            gooseController.ApplyDamage(attackDamage);
+            lastAttackTime = Time.time;
+            Debug.Log("GOOSE THE BOSS is pecking");
+        }
+    }
+
+    void StopEnemyAttackAnimation()
+    {
+        isAboutToAttack = false;
+        animator.Play("Boss_Idle", -1, 0f);
+        SoundManager.Instance.Play(bossLaugh);
+    }
+
 }
