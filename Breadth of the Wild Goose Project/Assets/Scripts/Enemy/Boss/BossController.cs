@@ -7,6 +7,8 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     Animator animator;
     BoxCollider2D box2d;
 
+    [SerializeField] AudioClip bossLaugh;
+
     bool IsTakingDamage;
     bool isInvincible;
     bool hitSideRight;
@@ -187,6 +189,8 @@ public class Boss_Controller : MonoBehaviour, IDamageable
         IsTakingDamage = false;
         isInvincible = false;
         animator.Play("Boss_Idle", -1, 0f);
+        SoundManager.Instance.Play(bossLaugh);
+
 
     }
 }
