@@ -189,8 +189,8 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             IsTakingDamage = true;
             isInvincible = true;
             //hitCount = 0;
-            float hitForceX = 500f;
-            float hitForceY = 500f;
+            float hitForceX = 750f;
+            float hitForceY = 750f;
             if (hitSideRight) hitForceX = -hitForceX;
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(new Vector2(hitForceX,hitForceY), ForceMode.Impulse);

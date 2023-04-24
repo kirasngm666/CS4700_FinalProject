@@ -98,7 +98,7 @@ Transform:
   - {fileID: 3508658320346329159}
   - {fileID: 4329538630727903818}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9206102238575175156
 MonoBehaviour:
@@ -114,9 +114,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 250
   jumpSpeed: 350
+  jumpClip: {fileID: 8300000, guid: 80d495a0b14921d4d8b5dc912f6a633e, type: 3}
+  jumpLandedClip: {fileID: 8300000, guid: 711d85adf19510a4d91b40d5801d71d7, type: 3}
+  peckClip: {fileID: 8300000, guid: 39fb19d844f393e4a8f7c983e327ec83, type: 3}
+  slapClip: {fileID: 8300000, guid: b72eb8773c4a31d489dbee9b3883ec43, type: 3}
+  kickClip: {fileID: 8300000, guid: 4d9ce4940b81e5844ad8c01a220faa92, type: 3}
+  takingDamageClip: {fileID: 8300000, guid: 82c58199bb63b5849a10a479c7c8f73c, type: 3}
   meleeAttackOrigin: {fileID: 3508658320346329159}
   meleeAttackRadius: 20
-  meleeDamage: 2
+  meleeDamage: 20
   meleeAttackDelay: 1.1
   enemyLayer:
     serializedVersion: 2
@@ -185,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 5547593884489622220}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0fa012df6346554aa94d5feeb40f23c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
