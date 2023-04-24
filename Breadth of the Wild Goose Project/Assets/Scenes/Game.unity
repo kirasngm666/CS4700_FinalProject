@@ -752,7 +752,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -32.94
+  near clip plane: -147.8
   far clip plane: 1000
   field of view: 14.070507
   orthographic: 1
@@ -2175,41 +2175,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Goose
       objectReference: {fileID: 0}
-    - target: {fileID: 72596340792275832, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: speed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: healthPool
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: attackCooldown
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1337308098}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: patrolDestination
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: patrolPoints.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: patrolPoints.Array.data[0]
@@ -2275,20 +2245,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+    - target: {fileID: 3186257469611408450, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0.06674972
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+    - target: {fileID: 3186257469611408450, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0.06674972
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
-      propertyPath: m_Color.r
-      value: 0.9433962
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2989,6 +2964,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3186257469611408450, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186257469611408450, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.091224626
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.091224626
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599270039901179034, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.09433961
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3147,11 +3157,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
-      propertyPath: attackDistance
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
-        type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1337308098}
@@ -3221,6 +3226,16 @@ PrefabInstance:
     - target: {fileID: 755692683074979157, guid: 45c989ec189d0e14191b0d8ba5513147,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828720631725472282, guid: 45c989ec189d0e14191b0d8ba5513147,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828720631725472282, guid: 45c989ec189d0e14191b0d8ba5513147,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7370761757396187774, guid: 45c989ec189d0e14191b0d8ba5513147,
@@ -3347,6 +3362,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Big Goose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984963047900415330, guid: ca71182cabdea6346a7aedf81586ace0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984963047900415330, guid: ca71182cabdea6346a7aedf81586ace0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

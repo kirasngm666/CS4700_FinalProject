@@ -36,9 +36,9 @@ public class GooseController : MonoBehaviour, IDamageable
 
     public Transform meleeAttackOrigin = null;
     public float meleeAttackRadius = 0.6f;
-    public float meleeDamage = 2f;
-    public float meleeAttackDelay = 1.1f;
+    public int meleeDamage = 2;
     public LayerMask enemyLayer = 10;
+    public float meleeAttackDelay = 1.1f;
     private float timeUntilMeleeReadied = 0;
     public float healthPool = 200;
     public float currentHealth;
@@ -269,7 +269,7 @@ public class GooseController : MonoBehaviour, IDamageable
         transform.Rotate(0f, 180f, 0f);
     }
 
-    public virtual void ApplyDamage(float amount)
+    public virtual void ApplyDamage(int amount)
     {
         if (!isInvincible)
         {

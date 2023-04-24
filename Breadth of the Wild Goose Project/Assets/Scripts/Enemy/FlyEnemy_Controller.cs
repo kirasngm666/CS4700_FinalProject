@@ -12,7 +12,7 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
     bool hitSideRight;
     
 
-    public float healthPool = 2f;
+    public int healthPool = 2;
     public float speed = 300f;
     //public float jumpForce = 6f;
     //public float groundedLeeway = 0.1f;
@@ -22,7 +22,7 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
     public int attackDamage = 10;
     public float attackCooldown = 1.0f;
 
-   [SerializeField] private float currentHealth;
+   [SerializeField] private int currentHealth;
     private float lastAttackTime;
 
     private GameObject player;
@@ -40,12 +40,15 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
     private int hitCount = 0;
 
     private GameManagerController gameManagerController;
-     private GameObject gameManager;
+    private GameObject gameManager;
+
+    public EnemyHealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = healthPool;
+        healthBar.SetMaxHealth(healthPool);
         animator = GetComponent<Animator>();
         box2d = GetComponent<BoxCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -159,12 +162,13 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void ApplyDamage(float amount)
+    public virtual void ApplyDamage(int amount)
     {
         //hitCount++;
         if (!isInvincible)
         {
             currentHealth -= amount;
+            healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
                 Die();
