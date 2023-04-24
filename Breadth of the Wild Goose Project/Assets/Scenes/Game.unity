@@ -1708,8 +1708,7 @@ MonoBehaviour:
     type: 3}
   swarmerInterval: 3.5
   bigSwarmerInterval: 10
-  spawnOffset: 10
-  maxEnemies: 4
+  maxEnemies: 6
   maxTotalEnemies: 10
 --- !u!4 &1081513584
 Transform:

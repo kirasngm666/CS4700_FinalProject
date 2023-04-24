@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     // private float spawnOffset = 10f; // distance from edge of screen to spawn enemy
 
     [SerializeField]
-    private int maxEnemies = 4; // maximum number of enemies that can spawn at once
+    private int maxEnemies = 6; // maximum number of enemies that can spawn at once
     private int enemyCount = 0; // current number of enemies in the scene
     [SerializeField]
     private int maxTotalEnemies = 10; // maximum number of enemies that can spawn in total

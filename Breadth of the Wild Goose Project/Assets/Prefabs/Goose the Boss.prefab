@@ -199,7 +199,7 @@ MonoBehaviour:
   jumpForce: 350
   attackDistance: 70
   attackSpeed: 1
-  attackDamage: 20
+  attackDamage: 45
   attackCooldown: 4
   currentHealth: 0
   playerTransform: {fileID: 0}
