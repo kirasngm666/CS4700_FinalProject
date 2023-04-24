@@ -14,8 +14,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float bigSwarmerInterval = 10f;
 
-    [SerializeField]
-    private float spawnOffset = 10f; // distance from edge of screen to spawn enemy
+    // [SerializeField]
+    // private float spawnOffset = 10f; // distance from edge of screen to spawn enemy
 
     [SerializeField]
     private int maxEnemies = 4; // maximum number of enemies that can spawn at once

@@ -22,7 +22,7 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         //if 4 enemies have been beaten, move camera to boss section
-        if (GameManagerController.instance != null && GameManagerController.instance.enemiesBeaten >= 4)
+        if (GameManagerController.instance != null && GameManagerController.instance.enemiesBeaten >= 10)
         {
            
             if (!isPlayerTeleported)
