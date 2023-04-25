@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    // Initialize component
     public Transform player;
     public Transform nextSection;
     public float smoothTime = 0.3f;
+    private GameManagerController gameManagerController;
+    private GameObject gameManager;
 
-    private GameManagerController gameManager;
+    // Bool values
     private bool isPlayerTeleported = false;
+    
+    // Other Info 
     private Vector3 velocity = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManagerController.instance;
+        gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+        gameManagerController = gameManager.GetComponent<GameManagerController>();
     }
 
     // Update is called once per frame
@@ -29,6 +35,7 @@ public class CameraControl : MonoBehaviour
             {
                 Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
                 player.position = newPosition;
+                //gameManagerController.BringUpTheWall();
                 isPlayerTeleported = true;
             }
 

@@ -4,42 +4,34 @@ using UnityEngine;
 
 public class Boss_Controller : MonoBehaviour, IDamageable
 {
+    // Initialize component
     Animator animator;
     BoxCollider2D box2d;
-
     [SerializeField] AudioClip bossLaugh;
-
-    bool IsTakingDamage;
-    bool isInvincible;
-    bool hitSideRight;
-    
-
-    public int healthPool = 100;
-    public float speed = 70f;
-    public float jumpForce = 350f;
-    //public float groundedLeeway = 0.1f;
-
-    public float attackDistance = 30.0f;
-    public float attackSpeed = 1.0f;
-    public int attackDamage = 45;
-    public float attackCooldown = 4.0f;
-    private bool isAboutToAttack;
-
-   [SerializeField] private int currentHealth;
-    private float lastAttackTime;
-
     private GameObject player;
     private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
 
+    // Bool values
+    bool IsTakingDamage;
+    bool isInvincible;
+    bool hitSideRight;
     public bool isChasing = false;
-    public float chaseDistance;
+    private bool isAboutToAttack;
 
-    //public Transform[] patrolPoints;
-    //public int patrolDestination;
-
+    // Boss Info
+    public int healthPool = 100;
+    [SerializeField] private int currentHealth;
+    public float speed = 70f;
+    //public float jumpForce = 350f;
+    public float attackDistance = 30.0f;
+    public float attackSpeed = 1.0f;
+    public int attackDamage = 45;
+    public float attackCooldown = 4.0f;
+    private float lastAttackTime;
     private int hitCount = 0;
+    public float chaseDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -60,13 +52,14 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             animator.Play("Boss_Hit");
             return;
         }
-        
+        // If the boss is within range of attack
         if (isAboutToAttack)
         {
             animator.Play("Boss_Slap");
             return;
             //Attack();
         }
+        // If the boss is not within range of attack
         else
         {
             BossMovement();
@@ -86,10 +79,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
                 transform.position += Vector3.left * speed * Time.deltaTime;
                 if (distance < attackDistance)
                 {
-                    //animator.SetActive("Boss_Run", false);
-                    //animator.Play("Boss_Slap");
                     Attack();
-                    //isAboutToAttack = true;
                 }
             }
             if(transform.position.x < (playerTransform.position.x - 1.0f))

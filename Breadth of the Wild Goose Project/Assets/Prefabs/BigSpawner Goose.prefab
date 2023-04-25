@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d49556bbad7fe43bd169ffdfcbee6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPool: 100
+  healthPool: 25
   speed: 100
   jumpForce: 350
   attackDistance: 20

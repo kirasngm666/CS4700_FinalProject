@@ -4,45 +4,39 @@ using UnityEngine;
 
 public class FlyEnemy_Controller : MonoBehaviour, IDamageable
 {
+    // Initialize component
     Animator animator;
     BoxCollider2D box2d;
-
-    bool IsTakingDamage;
-    bool isInvincible;
-    bool hitSideRight;
-    
-
-    public int healthPool = 2;
-    public float speed = 300f;
-    //public float jumpForce = 6f;
-    //public float groundedLeeway = 0.1f;
-
-    public float attackDistance = 25.0f;
-    public float attackSpeed = 10.0f;
-    public int attackDamage = 10;
-    public float attackCooldown = 1.0f;
-
-   [SerializeField] private int currentHealth;
-    private float lastAttackTime;
-
     private GameObject player;
     private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
-    
-
-    public bool isChasing = false;
-    public float chaseDistance;
-
-    public Transform[] patrolPoints;
-    public int patrolDestination;
-
-    private int hitCount = 0;
-
     private GameManagerController gameManagerController;
     private GameObject gameManager;
-
     public EnemyHealthBar healthBar;
+    
+    // Bool values
+    bool IsTakingDamage;
+    bool isInvincible;
+    bool hitSideRight;
+    private bool isAboutToAttack;
+    public bool isChasing = false;
+    
+    // Enemy info
+    public int healthPool = 10;
+    [SerializeField] private int currentHealth;
+    public float speed = 300f;
+    //public float jumpForce = 6f;
+    //public float groundedLeeway = 0.1f;
+    public float attackDistance = 25.0f;
+    public float attackSpeed = 10.0f;
+    public int attackDamage = 10;
+    public float attackCooldown = 1.0f;
+    private float lastAttackTime;
+    private int hitCount = 0;
+    public float chaseDistance;
+    public Transform[] patrolPoints;
+    public int patrolDestination;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +50,6 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
         gameManager = GameObject.FindGameObjectWithTag("Game Manager");
         gameManagerController = gameManager.GetComponent<GameManagerController>();
         rb2d = GetComponent<Rigidbody>();
-
     }
 
     // Update is called once per frame
@@ -67,7 +60,21 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
             animator.Play("Enemy_Hit");
             return;
         }
+        
+        if (isAboutToAttack)
+        {
+            animator.Play("Enemy_Peck");
+            return;
+            //Attack();
+        }
+        else
+        {
+            EnemyMovement();
+        } 
+    }
 
+    void EnemyMovement()
+    {
         //chaseDistance = 50;
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (isChasing && Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
@@ -137,29 +144,12 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
             }
         }
     }
-
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
         {
-            //animator.SetBool("isRunning", false);
-            //animator.SetBool("isAttacking", true);
-            //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
-            gooseController.hitSide(transform.position.x > player.transform.position.x);
-            //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
-            animator.Play("Enemy_Peck");
-            gooseController.ApplyDamage(attackDamage);
-            lastAttackTime = Time.time;
-            Debug.Log("The ENEMY GOOSE is pecking");
-            hitCount++;
-            //chaseDistance = 0;
-            // isChasing = false;
-        }
-        else
-        {
-            //animator.SetBool("isRunning", true);
-            //animator.SetBool("isAttacking", false);
-        }
+            StartEnemyAttackAnimation();
+        } 
     }
 
     public virtual void ApplyDamage(int amount)
@@ -220,5 +210,25 @@ public class FlyEnemy_Controller : MonoBehaviour, IDamageable
         IsTakingDamage = false;
         isInvincible = false;
         animator.Play("Enemy_Fly", -1, 0f);
+    }
+
+    public void StartEnemyAttackAnimation()
+    {
+        if (!isAboutToAttack)
+        {
+            isAboutToAttack = true;
+            gooseController.hitSide(transform.position.x > player.transform.position.x);
+            //animator.Play("Enemy_Peck");
+            gooseController.ApplyDamage(attackDamage);
+            lastAttackTime = Time.time;
+            Debug.Log("The ENEMY GOOSE is pecking");
+        }
+    }
+
+    void StopEnemyAttackAnimation()
+    {
+        isAboutToAttack = false;
+        animator.Play("Enemy_Fly", -1, 0f);
+        //SoundManager.Instance.Play(bossLaugh);
     }
 }
