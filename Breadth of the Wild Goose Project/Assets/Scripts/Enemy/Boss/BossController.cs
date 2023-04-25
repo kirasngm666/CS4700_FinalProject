@@ -21,7 +21,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
 
     public float attackDistance = 30.0f;
     public float attackSpeed = 1.0f;
-    public int attackDamage = 10;
+    public int attackDamage = 45;
     public float attackCooldown = 4.0f;
     private bool isAboutToAttack;
 
