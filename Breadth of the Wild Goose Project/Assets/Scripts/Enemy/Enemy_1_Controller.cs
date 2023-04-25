@@ -13,13 +13,13 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     
 
     public int healthPool = 10;
-    public float speed = 5f;
-    public float jumpForce = 6f;
+    public float speed = 100f;
+    public float jumpForce = 350f;
     //public float groundedLeeway = 0.1f;
 
-    public float attackDistance = 2.0f;
+    public float attackDistance = 25.0f;
     public float attackSpeed = 1.0f;
-    public int attackDamage = 10;
+    public int attackDamage = 2;
     public float attackCooldown = 2.0f;
 
    [SerializeField] private int currentHealth;
@@ -31,7 +31,7 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     public Transform playerTransform;
 
     public bool isChasing = false;
-    public bool isMoving = false;
+    //public bool isMoving = false;
     public float chaseDistance;
 
     public Transform[] patrolPoints;
