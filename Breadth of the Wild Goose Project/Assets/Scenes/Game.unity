@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379567070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 729, y: -147, z: 4.227934}
+  m_LocalPosition: {x: 760, y: -147, z: 4.227934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1706,8 +1706,8 @@ MonoBehaviour:
     type: 3}
   bigSwarmerPrefab: {fileID: 8600479129527858499, guid: b5fea59cd5cd47a419eb718e026bce27,
     type: 3}
-  swarmerInterval: 3.5
-  bigSwarmerInterval: 10
+  swarmerInterval: 6
+  bigSwarmerInterval: 15
   maxEnemies: 6
   maxTotalEnemies: 10
 --- !u!4 &1081513584
@@ -2131,18 +2131,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1578292477}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1518397267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8686441269764836697, guid: fc6797fad75fb0043a906731e1a102c7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2102480209}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8053a1eb2a5e3154bb16e902a667a4bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1526802560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,6 +2193,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 745427051}
+    - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
+        type: 3}
+      propertyPath: healthPool
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: playerTransform
@@ -3030,9 +3023,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 1518397267}
+      propertyPath: healthPool
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1883766779712211657, guid: fc6797fad75fb0043a906731e1a102c7,
         type: 3}
       propertyPath: playerTransform
@@ -3113,19 +3106,8 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5476206105863389979, guid: fc6797fad75fb0043a906731e1a102c7,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5403689870473986923, guid: fc6797fad75fb0043a906731e1a102c7, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc6797fad75fb0043a906731e1a102c7, type: 3}
@@ -3199,8 +3181,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
+      propertyPath: healthPool
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
+        type: 3}
       propertyPath: meleeDamage
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3279,6 +3266,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
+      propertyPath: healthPool
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
+      propertyPath: attackDamage
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
@@ -3367,6 +3364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flying Goose
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121858157363141874, guid: 45c989ec189d0e14191b0d8ba5513147,
+        type: 3}
+      propertyPath: healthPool
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9121858157363141874, guid: 45c989ec189d0e14191b0d8ba5513147,
         type: 3}
@@ -3467,6 +3469,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
+        type: 3}
+      propertyPath: healthPool
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5261771624720313774, guid: ca71182cabdea6346a7aedf81586ace0,
         type: 3}

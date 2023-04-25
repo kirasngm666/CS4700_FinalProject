@@ -4,44 +4,39 @@ using UnityEngine;
 
 public class Enemy_1_Controller : MonoBehaviour, IDamageable
 {
+    // Initialize component
     Animator animator;
     BoxCollider2D box2d;
-
-    bool IsTakingDamage;
-    bool isInvincible;
-    bool hitSideRight;
-    
-
-    public int healthPool = 10;
-    public float speed = 100f;
-    public float jumpForce = 350f;
-    //public float groundedLeeway = 0.1f;
-
-    public float attackDistance = 25.0f;
-    public float attackSpeed = 1.0f;
-    public int attackDamage = 2;
-    public float attackCooldown = 2.0f;
-
-   [SerializeField] private int currentHealth;
-    private float lastAttackTime;
-
     private GameObject player;
     private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
+    private GameManagerController gameManagerController;
+    private GameObject gameManager;
+    public EnemyHealthBar healthBar;
 
+    // Bool values
+    bool IsTakingDamage;
+    bool isInvincible;
+    bool hitSideRight;
+    private bool isAboutToAttack;
+
+    // Enemy Info
+    public int healthPool = 10;
+    [SerializeField] private int currentHealth;
+    public float speed = 100f;
+    public float jumpForce = 350f;
+    //public float groundedLeeway = 0.1f;
+    public float attackDistance = 25.0f;
+    public float attackSpeed = 1.0f;
+    public int attackDamage = 2;
+    public float attackCooldown = 2.0f;
+    private float lastAttackTime;
     public bool isChasing = false;
     //public bool isMoving = false;
     public float chaseDistance;
-
     public Transform[] patrolPoints;
     public int patrolDestination;
-
-    private GameManagerController gameManagerController;
-    private GameObject gameManager;
-
-    public EnemyHealthBar healthBar;
-
     //private int hitCount = 0;
 
     // Start is called before the first frame update
@@ -66,7 +61,17 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
             animator.Play("Enemy_Hit");
             return;
         }
-        EnemyMovement();
+        
+        if (isAboutToAttack)
+        {
+            animator.Play("Enemy_Peck");
+            return;
+            //Attack();
+        }
+        else
+        {
+            EnemyMovement();
+        } 
         
     }
 
@@ -132,21 +137,8 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     {
         if (Time.time - lastAttackTime > attackCooldown)
         {
-            //animator.SetBool("isRunning", false);
-            //animator.SetBool("isAttacking", true);
-            //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
-            gooseController.hitSide(transform.position.x > player.transform.position.x);
-            //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
-            animator.Play("Enemy_Peck");
-            gooseController.ApplyDamage(attackDamage);
-            lastAttackTime = Time.time;
-            Debug.Log("The ENEMY GOOSE is pecking");
-        }
-        else
-        {
-            //animator.SetBool("isRunning", true);
-            //animator.SetBool("isAttacking", false);
-        }
+            StartEnemyAttackAnimation();
+        }  
     }
 
     public virtual void ApplyDamage(int amount)
@@ -202,11 +194,28 @@ public class Enemy_1_Controller : MonoBehaviour, IDamageable
     }
 
     void StopEnemyDamageAnimation()
-    {
-        
+    { 
         IsTakingDamage = false;
         isInvincible = false;
         animator.Play("Enemy_Run", -1, 0f);
+    }
 
+    public void StartEnemyAttackAnimation()
+    {
+        if (!isAboutToAttack)
+        {
+            isAboutToAttack = true;
+            gooseController.hitSide(transform.position.x > player.transform.position.x);
+            gooseController.ApplyDamage(attackDamage);
+            lastAttackTime = Time.time;
+            Debug.Log("The ENEMY GOOSE is pecking");
+        }
+    }
+
+    void StopEnemyAttackAnimation()
+    {
+        isAboutToAttack = false;
+        animator.Play("Enemy_Idle", -1, 0f);
+        //SoundManager.Instance.Play(bossLaugh);
     }
 }

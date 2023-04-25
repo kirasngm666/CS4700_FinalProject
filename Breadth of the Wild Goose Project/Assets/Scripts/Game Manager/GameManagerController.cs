@@ -61,4 +61,11 @@ public class GameManagerController : MonoBehaviour
     {
         bossDefeated = true;
     }
+
+    public void BringUpTheWall()
+    {
+        isActive = false;
+        enemiesBeaten = 0;
+        rightWall.SetActive(true);
+    }
 }

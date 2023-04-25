@@ -4,45 +4,41 @@ using UnityEngine;
 
 public class SmallSpawner_Controller : MonoBehaviour, IDamageable
 {
+    // Initialize component
     Animator animator;
     BoxCollider2D box2d;
-
-    bool IsTakingDamage;
-    bool isInvincible;
-    bool hitSideRight;
-    
-
-    public int healthPool = 12;
-    public float speed = 100f;
-    public float jumpForce = 350f;
-    //public float groundedLeeway = 0.1f;
-
-    public float attackDistance = 25.0f;
-    public float attackSpeed = 2.0f;
-    public int attackDamage = 2;
-    public float attackCooldown = 1.0f;
-
-   [SerializeField] private int currentHealth;
-    private float lastAttackTime;
-
     private GameObject player;
     private Rigidbody rb2d;
     private GooseController gooseController;
     public Transform playerTransform;
+    private GameManagerController gameManagerController;
+    private GameObject gameManager;
+    public EnemyHealthBar healthBar;
 
+
+    // Bool value
+    bool IsTakingDamage;
+    bool isInvincible;
+    bool hitSideRight;
+    private bool isAboutToAttack;
     public bool isChasing = false;
+    
+    // Enemy info
+    public int healthPool = 12;
+    public float speed = 100f;
+    public float jumpForce = 350f;
+    //public float groundedLeeway = 0.1f;
+    public float attackDistance = 25.0f;
+    public float attackSpeed = 2.0f;
+    public int attackDamage = 2;
+    public float attackCooldown = 1.0f;
+    [SerializeField] private int currentHealth;
+    private float lastAttackTime;
     //public bool isMoving = false;
     public float chaseDistance = 300f;
-
     // public Transform[] patrolPoints;
     // public int patrolDestination;
     // private GameObject[] GameObjPatrolPoint;
-
-    private GameManagerController gameManagerController;
-    private GameObject gameManager;
-
-    public EnemyHealthBar healthBar;
-
     //private int hitCount = 0;
 
     // Start is called before the first frame update
@@ -73,7 +69,16 @@ public class SmallSpawner_Controller : MonoBehaviour, IDamageable
             animator.Play("Enemy_Hit");
             return;
         }
-        EnemyMovement();
+        if (isAboutToAttack)
+        {
+            animator.Play("Enemy_Peck");
+            return;
+            //Attack();
+        }
+        else
+        {
+            EnemyMovement();
+        } 
         
     }
 
@@ -109,50 +114,13 @@ public class SmallSpawner_Controller : MonoBehaviour, IDamageable
             {
                 isChasing = true;
             } 
-            // else
-            // {
-            //     isChasing = false;
-            //     if (patrolDestination == 0)
-            //     {
-            //         animator.Play("Enemy_Run");
-            //         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, speed * Time.deltaTime);
-            //         if(Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
-            //         {
-            //             transform.localScale = new Vector3(45, 20 ,1);
-            //             patrolDestination = 1;
-            //         }
-            //     }
-            //     if (patrolDestination == 1)
-            //     {
-            //         animator.Play("Enemy_Run");
-            //         transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, speed * Time.deltaTime);
-            //         if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
-            //         {
-            //             transform.localScale = new Vector3(-45, 20 ,1);
-            //             patrolDestination = 0;
-            //         }
-            //     }
-            // }
         }
     }
     public void Attack()
     {
         if (Time.time - lastAttackTime > attackCooldown)
         {
-            //animator.SetBool("isRunning", false);
-            //animator.SetBool("isAttacking", true);
-            //player.GetComponent<GooseController>().hitSide(transform.position.x > player.transform);
-            gooseController.hitSide(transform.position.x > player.transform.position.x);
-            //player.GetComponent<GooseController>().ApplyDamage(attackDamage);
-            animator.Play("Enemy_Peck");
-            gooseController.ApplyDamage(attackDamage);
-            lastAttackTime = Time.time;
-            Debug.Log("The ENEMY GOOSE is pecking");
-        }
-        else
-        {
-            //animator.SetBool("isRunning", true);
-            //animator.SetBool("isAttacking", false);
+            StartEnemyAttackAnimation();
         }
     }
 
@@ -215,5 +183,24 @@ public class SmallSpawner_Controller : MonoBehaviour, IDamageable
         isInvincible = false;
         animator.Play("Enemy_Run", -1, 0f);
 
+    }
+    public void StartEnemyAttackAnimation()
+    {
+        if (!isAboutToAttack)
+        {
+            isAboutToAttack = true;
+            gooseController.hitSide(transform.position.x > player.transform.position.x);
+            //animator.Play("Enemy_Peck");
+            gooseController.ApplyDamage(attackDamage);
+            lastAttackTime = Time.time;
+            Debug.Log("The ENEMY GOOSE is pecking");
+        }
+    }
+
+    void StopEnemyAttackAnimation()
+    {
+        isAboutToAttack = false;
+        animator.Play("Enemy_Idle", -1, 0f);
+        //SoundManager.Instance.Play(bossLaugh);
     }
 }

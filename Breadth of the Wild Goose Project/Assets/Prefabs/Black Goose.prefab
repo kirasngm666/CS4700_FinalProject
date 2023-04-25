@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 8255400367279766757}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -150, z: 0}
 --- !u!212 &6599270039901179034
 SpriteRenderer:
@@ -204,7 +204,6 @@ MonoBehaviour:
   currentHealth: 0
   playerTransform: {fileID: 0}
   isChasing: 0
-  isMoving: 0
   chaseDistance: 100
   patrolPoints:
   - {fileID: 0}

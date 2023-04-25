@@ -194,9 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossLaugh: {fileID: 8300000, guid: cab5abfd34c15c84b8203a5abc9a943e, type: 3}
-  healthPool: 100
+  healthPool: 50
   speed: 70
-  jumpForce: 350
   attackDistance: 70
   attackSpeed: 1
   attackDamage: 45
