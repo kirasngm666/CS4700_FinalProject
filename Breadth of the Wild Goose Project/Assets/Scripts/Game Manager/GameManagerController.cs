@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameManagerController : MonoBehaviour
 {
-    public int enemiesBeaten = 0;
-
+    
     public static GameManagerController instance;
-
-    private bool isActive;
-
     private GameObject rightWall;
 
+    private bool isActive;
     public bool bossDefeated = false;
+    private bool isPassingTriggerPoint;
 
+    public int enemiesBeaten = 0;
+   
     public void Awake()
     {
         {
