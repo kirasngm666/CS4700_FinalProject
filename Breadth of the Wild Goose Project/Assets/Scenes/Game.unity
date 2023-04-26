@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379567070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 760, y: -147, z: 4.227934}
+  m_LocalPosition: {x: 856, y: -139, z: 4.227934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -752,7 +752,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -147.8
+  near clip plane: -182.93
   far clip plane: 1000
   field of view: 14.070507
   orthographic: 1
@@ -799,9 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34b4e1a6d963d144a328ba61bfd1da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 575123275}
   nextSection: {fileID: 379567071}
-  smoothTime: 0.5
+  smoothTime: 1
 --- !u!1 &575123274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,8 +1480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9cfdfe3e777fc4fb5fe0b030b309e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesBeaten: 0
   bossDefeated: 0
+  enemiesBeaten: 0
 --- !u!1 &1013342176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,8 +1705,8 @@ MonoBehaviour:
     type: 3}
   bigSwarmerPrefab: {fileID: 8600479129527858499, guid: b5fea59cd5cd47a419eb718e026bce27,
     type: 3}
-  swarmerInterval: 6
-  bigSwarmerInterval: 15
+  swarmerInterval: 1
+  bigSwarmerInterval: 1
   maxEnemies: 6
   maxTotalEnemies: 10
 --- !u!4 &1081513584
@@ -3187,7 +3186,7 @@ PrefabInstance:
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: meleeDamage
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3220,17 +3219,17 @@ PrefabInstance:
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1025
+      value: 1109
       objectReference: {fileID: 0}
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -119
+      value: -114
       objectReference: {fileID: 0}
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 1274810093589531675, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}

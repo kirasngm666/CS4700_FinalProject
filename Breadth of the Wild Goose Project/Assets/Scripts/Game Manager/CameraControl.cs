@@ -5,9 +5,11 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     // Initialize component
-    public Transform player;
+    
+    private GameObject player;
+    //public Transform player;
     public Transform nextSection;
-    public float smoothTime = 0.3f;
+    public float smoothTime = 1.0f;
     private GameManagerController gameManagerController;
     private GameObject gameManager;
 
@@ -20,6 +22,7 @@ public class CameraControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("Game Manager");
         gameManagerController = gameManager.GetComponent<GameManagerController>();
     }
@@ -33,8 +36,7 @@ public class CameraControl : MonoBehaviour
            
             if (!isPlayerTeleported)
             {
-                Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
-                player.position = newPosition;
+                Invoke("Teleportation", 75/100);
                 //gameManagerController.BringUpTheWall();
                 isPlayerTeleported = true;
             }
@@ -44,7 +46,13 @@ public class CameraControl : MonoBehaviour
         //if no boss fight, camera follows player
         else
         {
-            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+            //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.transform.position.z);
         }
+    }
+
+    void Teleportation()
+    {
+        Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
+        player.transform.position = newPosition;
     }
 }
