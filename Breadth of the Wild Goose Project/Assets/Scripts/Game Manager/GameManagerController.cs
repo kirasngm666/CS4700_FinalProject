@@ -35,6 +35,7 @@ public class GameManagerController : MonoBehaviour
     //public Transform nextSectionTransform;
     private CameraControl cameraControl;
     private GameObject nextSection;
+    private GameObject fixPatrolPoint;
 
     private Vector3 velocity = Vector3.zero;
 
@@ -62,6 +63,7 @@ public class GameManagerController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
         nextSection = GameObject.FindGameObjectWithTag("Next Section Point");
+        fixPatrolPoint = GameObject.FindGameObjectWithTag("Fix Patrol B");
         cameraControl = cameraObject.GetComponent<CameraControl>();
     }
     
@@ -136,8 +138,9 @@ public class GameManagerController : MonoBehaviour
         {
             isActive = true;
             Debug.Log("You've beaten 10 enemies!");
-            Debug.Log("Bring down the right wall barrier!");
-            rightWall.SetActive(false);
+            rightWall.transform.position = fixPatrolPoint.transform.position;
+            //Debug.Log("Bring down the right wall barrier!");
+            //rightWall.SetActive(false);
             //warningText.SetActive(true);
         }
     }
