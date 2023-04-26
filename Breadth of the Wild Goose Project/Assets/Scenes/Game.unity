@@ -1707,8 +1707,8 @@ MonoBehaviour:
     type: 3}
   bigSwarmerPrefab: {fileID: 8600479129527858499, guid: b5fea59cd5cd47a419eb718e026bce27,
     type: 3}
-  swarmerInterval: 1
-  bigSwarmerInterval: 1
+  swarmerInterval: 6
+  bigSwarmerInterval: 15
   maxEnemies: 6
   maxTotalEnemies: 10
 --- !u!4 &1081513584
@@ -1786,7 +1786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270758148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 306, y: -67, z: 0}
+  m_LocalPosition: {x: 256, y: -67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2670,7 +2670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905319436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1117, y: -67, z: 0}
+  m_LocalPosition: {x: 796, y: -67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3324,7 +3324,7 @@ PrefabInstance:
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: meleeDamage
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
@@ -3412,12 +3412,12 @@ PrefabInstance:
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: healthPool
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
       propertyPath: attackDamage
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
