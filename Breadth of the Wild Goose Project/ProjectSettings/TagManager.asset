@@ -12,6 +12,8 @@ TagManager:
   - Wall Right
   - Fix Patrol A
   - Fix Patrol B
+  - Warning Text
+  - Next Section Point
   layers:
   - Default
   - TransparentFX

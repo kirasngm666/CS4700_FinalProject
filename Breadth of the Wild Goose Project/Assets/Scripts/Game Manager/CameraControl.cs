@@ -12,6 +12,7 @@ public class CameraControl : MonoBehaviour
     public float smoothTime = 1.0f;
     private GameManagerController gameManagerController;
     private GameObject gameManager;
+    //private GameObject warningText;
 
     // Bool values
     private bool isPlayerTeleported = false;
@@ -24,24 +25,25 @@ public class CameraControl : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("Game Manager");
+        //warningText = GameObject.FindGameObjectWithTag("Warning Text");
         gameManagerController = gameManager.GetComponent<GameManagerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if 4 enemies have been beaten, move camera to boss section
+        //if 10 enemies have been beaten, move camera to boss section
         if (GameManagerController.instance != null && GameManagerController.instance.enemiesBeaten >= 10)
         {
-           
             if (!isPlayerTeleported)
             {
-                Invoke("Teleportation", 75/100);
+                //warningText.SetActive(false);
+                //Invoke("Teleportation", 1);
                 //gameManagerController.BringUpTheWall();
                 isPlayerTeleported = true;
+                TeleportCamera();
             }
-
-            transform.position = Vector3.SmoothDamp(transform.position, nextSection.position, ref velocity, smoothTime);
+            // transform.position = Vector3.SmoothDamp(transform.position, nextSection.position, ref velocity, smoothTime);
         }
         //if no boss fight, camera follows player
         else
@@ -50,9 +52,14 @@ public class CameraControl : MonoBehaviour
         }
     }
 
-    void Teleportation()
+    // void Teleportation()
+    // {
+    //     Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
+    //     player.transform.position = newPosition;
+    // }
+
+    public void TeleportCamera()
     {
-        Vector3 newPosition = new Vector3(nextSection.position.x - 3f, nextSection.position.y, nextSection.position.z);
-        player.transform.position = newPosition;
+        transform.position = Vector3.SmoothDamp(transform.position, nextSection.position, ref velocity, smoothTime);
     }
 }
