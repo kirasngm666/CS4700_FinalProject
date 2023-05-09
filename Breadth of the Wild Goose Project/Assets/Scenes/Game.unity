@@ -3411,6 +3411,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
         type: 3}
+      propertyPath: bossCall
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c43bba2dcc3e4bf88e47c4e3fc9c85a, type: 3}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
+      propertyPath: bossLaugh
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c43bba2dcc3e4bf88e47c4e3fc9c85a, type: 3}
+    - target: {fileID: 5478596341972069890, guid: 3167c422c0b711848a44ff194619fcaa,
+        type: 3}
       propertyPath: healthPool
       value: 70
       objectReference: {fileID: 0}
