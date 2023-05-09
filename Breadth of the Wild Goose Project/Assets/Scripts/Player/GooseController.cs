@@ -12,7 +12,7 @@ public class GooseController : MonoBehaviour, IDamageable
     [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] float jumpSpeed = 3.7f;
 
-    //Audio
+    //Audio    
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip jumpLandedClip;
     [SerializeField] AudioClip peckClip;

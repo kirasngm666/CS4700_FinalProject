@@ -7,7 +7,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     // Initialize component
     Animator animator;
     BoxCollider2D box2d;
-    [SerializeField] AudioClip bossLaugh;
+    [SerializeField] AudioClip bossCall;
     private GameObject player;
     private Rigidbody rb2d;
     private GooseController gooseController;
@@ -134,6 +134,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
             if (currentHealth <= 0)
             {
                 Die();
+                SoundManager.Instance.Play(bossCall);
             }
             else
             {
@@ -180,7 +181,7 @@ public class Boss_Controller : MonoBehaviour, IDamageable
         IsTakingDamage = false;
         isInvincible = false;
         animator.Play("Boss_Idle", -1, 0f);
-        SoundManager.Instance.Play(bossLaugh);
+        SoundManager.Instance.Play(bossCall);
     }
 
     public void StartEnemyAttackAnimation()
@@ -199,7 +200,6 @@ public class Boss_Controller : MonoBehaviour, IDamageable
     {
         isAboutToAttack = false;
         animator.Play("Boss_Idle", -1, 0f);
-        SoundManager.Instance.Play(bossLaugh);
     }
 
 }
