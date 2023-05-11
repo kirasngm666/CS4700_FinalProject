@@ -756,7 +756,7 @@ Camera:
   far clip plane: 1000
   field of view: 14.070507
   orthographic: 1
-  orthographic size: 132.84589
+  orthographic size: 197.6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3324,7 +3324,7 @@ PrefabInstance:
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
       propertyPath: meleeDamage
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9206102238575175156, guid: 1dfaf1d7577bf4f4dae74698fc64aac6,
         type: 3}
